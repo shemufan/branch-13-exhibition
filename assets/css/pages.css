@@ -1,0 +1,232 @@
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+  display: grid;
+  align-items: center;
+  color: var(--paper-strong);
+  background:
+    radial-gradient(circle at 74% 18%, rgba(214, 163, 58, 0.24), transparent 28%),
+    linear-gradient(130deg, rgba(127, 29, 29, 0.98), rgba(153, 27, 27, 0.96) 52%, rgba(42, 23, 23, 0.96));
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, transparent 0 47%, rgba(239, 213, 139, 0.14) 47% 49%, transparent 49%),
+    repeating-linear-gradient(90deg, rgba(255, 248, 237, 0.05) 0 1px, transparent 1px 80px);
+  opacity: 0.9;
+}
+
+.hero-pattern {
+  position: absolute;
+  right: -80px;
+  bottom: -120px;
+  width: min(46vw, 540px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(239, 213, 139, 0.38);
+  border-radius: 50%;
+}
+
+.hero-pattern::before,
+.hero-pattern::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(239, 213, 139, 0.24);
+  border-radius: 50%;
+}
+
+.hero-pattern::before {
+  inset: 12%;
+}
+
+.hero-pattern::after {
+  inset: 26%;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 940px;
+  padding: 86px 0 98px;
+  animation: riseIn 650ms ease both;
+}
+
+.hero h1 {
+  max-width: 850px;
+  margin-bottom: 22px;
+  color: var(--paper-strong);
+  text-shadow: 0 8px 22px rgba(42, 23, 23, 0.28);
+}
+
+.hero-copy {
+  max-width: 680px;
+  margin-bottom: 34px;
+  color: rgba(255, 248, 237, 0.82);
+  font-size: clamp(1.02rem, 2vw, 1.24rem);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.section-warm {
+  background:
+    linear-gradient(180deg, rgba(255, 248, 237, 0.92), rgba(247, 238, 238, 0.92)),
+    var(--rose-wash);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.section-red {
+  color: var(--paper-strong);
+  background:
+    linear-gradient(90deg, rgba(127, 29, 29, 0.96), rgba(185, 28, 28, 0.92)),
+    var(--red-800);
+}
+
+.work-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 34px;
+  align-items: center;
+}
+
+.work-panel h2 {
+  margin-bottom: 0;
+  color: var(--paper-strong);
+}
+
+.focus-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.focus-list span {
+  min-height: 76px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(239, 213, 139, 0.42);
+  border-radius: var(--radius);
+  color: var(--paper-strong);
+  background: rgba(255, 248, 237, 0.09);
+  font-size: 1.08rem;
+  font-weight: 800;
+}
+
+.subpage-main {
+  min-height: 70vh;
+}
+
+.subpage-hero {
+  padding: 86px 0 76px;
+  color: var(--paper-strong);
+  background:
+    linear-gradient(120deg, rgba(127, 29, 29, 0.97), rgba(185, 28, 28, 0.9)),
+    var(--red-800);
+}
+
+.subpage-hero h1 {
+  margin-bottom: 16px;
+  color: var(--paper-strong);
+}
+
+.subpage-hero p:not(.section-kicker) {
+  max-width: 720px;
+  margin-bottom: 0;
+  color: rgba(255, 248, 237, 0.8);
+  font-size: 1.08rem;
+}
+
+.placeholder-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 22px;
+  align-items: start;
+}
+
+.content-placeholder,
+.side-note {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 247, 0.86);
+  box-shadow: 0 12px 28px rgba(127, 29, 29, 0.08);
+}
+
+.content-placeholder {
+  min-height: 320px;
+  padding: 32px;
+}
+
+.side-note {
+  padding: 24px;
+}
+
+.content-placeholder h2,
+.side-note h3 {
+  color: var(--red-900);
+}
+
+.document-viewer {
+  width: 100%;
+  min-height: 720px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 860px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .feature-grid,
+  .work-panel,
+  .placeholder-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .focus-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-inner {
+    padding: 58px 0 72px;
+  }
+
+  .hero-actions,
+  .focus-list {
+    grid-template-columns: 1fr;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .focus-list {
+    display: grid;
+  }
+}
