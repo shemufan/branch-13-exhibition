@@ -18,7 +18,11 @@
 │  │  └─ pages.css
 │  ├─ js/
 │  │  └─ main.js
-│  └─ images/
+│  ├─ images/
+│  │  ├─ school/
+│  │  ├─ college/
+│  │  └─ symposium/
+│  └─ documents/
 │     ├─ school/
 │     ├─ college/
 │     └─ symposium/
@@ -32,6 +36,7 @@
 - 院史页面由 `pages/college-history.html` 维护。
 - 座谈会记录页面由 `pages/symposium.html` 维护。
 - 图片按页面放入 `assets/images/` 下的对应目录。
+- 文档/PDF 资料放入到 `assets/documents/` 下的对应目录。
 - 各页面统一引用公共 CSS 和 JS，避免重复写一套导航、配色和基础样式。
 
 ## 使用方式
