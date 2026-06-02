@@ -263,6 +263,67 @@
   border-color: transparent;
 }
 
+.symposium-filter-month {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-left: 8px;
+  padding-left: 16px;
+  border-left: 1px solid var(--line);
+}
+
+.symposium-filter-month-label {
+  font-weight: 700;
+  color: var(--red-900);
+  font-size: 0.92rem;
+}
+
+.symposium-card.is-filtered {
+  display: none;
+}
+
+.symposium-empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--red-700);
+  font-size: 1rem;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 247, 0.6);
+}
+
+.discussion-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 20px;
+  color: var(--red-700);
+  text-align: center;
+  border: 1px dashed rgba(214, 163, 58, 0.4);
+  border-radius: var(--radius);
+  background: rgba(255, 248, 237, 0.4);
+  min-height: 240px;
+}
+
+.discussion-placeholder-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(214, 163, 58, 0.15);
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+
+.discussion-placeholder p {
+  font-size: 0.95rem;
+  opacity: 0.65;
+  margin: 0;
+}
+
 
 .symposium-card {
   padding: 28px 30px;
@@ -401,17 +462,22 @@
 }
 
 .symposium-discussion {
-  background: rgba(255, 248, 237, 0.7);
+  background: linear-gradient(180deg, rgba(255, 248, 237, 0.35), rgba(255, 248, 237, 0.7));
 }
 
 .discussion-shell {
-  padding: 26px;
+  padding: 24px;
   border-radius: calc(var(--radius) + 6px);
-  border: 1px solid rgba(127, 29, 29, 0.18);
+  border: 1px solid rgba(127, 29, 29, 0.14);
   background:
-    radial-gradient(circle at 8% 12%, rgba(214, 163, 58, 0.12), transparent 40%),
-    linear-gradient(180deg, rgba(255, 253, 247, 0.98), rgba(255, 248, 237, 0.92));
-  box-shadow: 0 18px 42px rgba(127, 29, 29, 0.12);
+    radial-gradient(circle at 8% 12%, rgba(214, 163, 58, 0.08), transparent 40%),
+    linear-gradient(180deg, rgba(255, 253, 247, 0.98), rgba(255, 248, 237, 0.9));
+  box-shadow: 0 14px 36px rgba(127, 29, 29, 0.1);
+}
+
+.discussion-topic-body {
+  display: grid;
+  gap: 14px;
 }
 
 .discussion-toolbar {
@@ -422,25 +488,28 @@
 }
 
 .discussion-filter-button {
-  min-height: 38px;
-  padding: 6px 18px;
-  border: 1px solid rgba(214, 163, 58, 0.6);
+  min-height: 34px;
+  padding: 5px 16px;
+  border: 1px solid rgba(214, 163, 58, 0.45);
   border-radius: 999px;
-  background: rgba(255, 248, 237, 0.72);
-  color: var(--red-900);
+  background: rgba(255, 248, 237, 0.7);
+  color: var(--red-700);
   font-weight: 700;
+  font-size: 0.84rem;
   cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, border-color 160ms ease;
 }
 
 .discussion-filter-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 16px rgba(127, 29, 29, 0.12);
+  box-shadow: 0 6px 14px rgba(127, 29, 29, 0.1);
+  border-color: rgba(214, 163, 58, 0.65);
 }
 
 .discussion-filter-button.is-active {
   background: linear-gradient(135deg, var(--gold-300), var(--gold-500));
   border-color: transparent;
+  color: var(--red-900);
 }
 
 .discussion-topic-button.is-active {
@@ -456,14 +525,14 @@
 .discussion-hub {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: 24px;
+  gap: 28px;
   align-items: start;
 }
 
 .discussion-panel,
 .discussion-feed {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 .discussion-panel .discussion-panel-header {
@@ -480,79 +549,108 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding: 16px 18px;
+  padding: 14px 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(255, 253, 247, 0.96);
-  box-shadow: 0 12px 26px rgba(127, 29, 29, 0.08);
+  box-shadow: 0 8px 20px rgba(127, 29, 29, 0.06);
 }
 
 .discussion-panel-header h3 {
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   color: var(--red-900);
+  font-size: 1.02rem;
 }
 
 .discussion-panel-header p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
 }
 
 .discussion-status {
-  padding: 6px 12px;
+  padding: 5px 12px;
   border-radius: 999px;
-  background: rgba(214, 163, 58, 0.2);
+  background: rgba(214, 163, 58, 0.18);
   color: var(--red-900);
   font-weight: 700;
-  font-size: 0.86rem;
+  font-size: 0.82rem;
+  white-space: nowrap;
 }
 
 .discussion-status.alt {
-  background: rgba(127, 29, 29, 0.12);
+  background: rgba(127, 29, 29, 0.1);
   color: var(--red-700);
 }
 
+/* ---- 话题卡片 ---- */
 .topic-card {
-  padding: 20px 22px;
+  padding: 18px 20px;
   border: 1px solid var(--line);
+  border-left: 3px solid transparent;
   border-radius: var(--radius);
   background: rgba(255, 253, 247, 0.96);
-  box-shadow: 0 12px 26px rgba(127, 29, 29, 0.08);
+  box-shadow: 0 8px 20px rgba(127, 29, 29, 0.05);
   display: grid;
   gap: 10px;
+  cursor: pointer;
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 160ms ease;
+}
+
+.topic-card:hover {
+  border-color: rgba(214, 163, 58, 0.45);
+  box-shadow: 0 12px 26px rgba(127, 29, 29, 0.1);
+  transform: translateY(-2px);
 }
 
 .topic-card--active {
-  border-color: rgba(214, 163, 58, 0.8);
-  box-shadow: 0 18px 32px rgba(127, 29, 29, 0.14);
+  border-color: rgba(214, 163, 58, 0.75);
+  border-left-color: var(--gold-500);
+  box-shadow: 0 14px 28px rgba(127, 29, 29, 0.12);
+  background: linear-gradient(135deg, rgba(255, 248, 237, 0.98), rgba(255, 253, 247, 0.96));
+}
+
+.topic-card h4 {
+  margin: 0;
+  color: var(--red-900);
+  font-size: 1rem;
+}
+
+.topic-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .topic-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   color: var(--muted);
   font-weight: 700;
 }
 
 .topic-tag {
-  padding: 4px 10px;
+  padding: 3px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(214, 163, 58, 0.5);
+  border: 1px solid rgba(214, 163, 58, 0.45);
   color: var(--red-700);
-  background: rgba(255, 248, 237, 0.6);
+  background: rgba(255, 248, 237, 0.7);
+  font-size: 0.8rem;
 }
 
 .topic-count {
   color: var(--red-700);
+  font-size: 0.84rem;
 }
 
 .topic-stats {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px;
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   color: var(--muted);
 }
 
@@ -560,40 +658,118 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-top: 4px;
 }
 
+.topic-card .button {
+  font-size: 0.88rem;
+  padding: 7px 20px;
+}
+
+/* ---- 排序 ---- */
+.discussion-sort {
+  display: flex;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+/* ---- 提要 ---- */
+.thread-summary {
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255, 253, 247, 0.98), rgba(255, 248, 237, 0.92));
+  box-shadow: 0 8px 20px rgba(127, 29, 29, 0.05);
+  display: grid;
+  gap: 8px;
+}
+
+.thread-summary h4 {
+  margin: 0 0 4px;
+  color: var(--red-900);
+  font-size: 0.95rem;
+}
+
+.thread-summary p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.thread-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding-top: 4px;
+  border-top: 1px dashed rgba(214, 163, 58, 0.35);
+}
+
+/* ---- 消息列表 ---- */
 .message-list {
   display: grid;
-  gap: 12px;
-  max-height: 360px;
+  gap: 10px;
+  max-height: 380px;
   overflow-y: auto;
-  padding-right: 4px;
+  padding-right: 6px;
+  scroll-behavior: smooth;
+}
+
+.message-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.message-list::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.message-list::-webkit-scrollbar-thumb {
+  background: rgba(214, 163, 58, 0.35);
+  border-radius: 3px;
+}
+
+.message-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(214, 163, 58, 0.55);
 }
 
 .message-card {
   display: grid;
-  grid-template-columns: 46px minmax(0, 1fr);
-  gap: 14px;
-  padding: 16px 18px;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px 16px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 248, 237, 0.86);
-  box-shadow: 0 12px 26px rgba(127, 29, 29, 0.08);
+  background: rgba(255, 253, 247, 0.94);
+  box-shadow: 0 6px 16px rgba(127, 29, 29, 0.04);
+  transition: box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.message-card:hover {
+  border-color: rgba(214, 163, 58, 0.35);
+  box-shadow: 0 10px 22px rgba(127, 29, 29, 0.08);
 }
 
 .message-avatar {
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-weight: 700;
-  color: var(--red-900);
-  background: linear-gradient(135deg, var(--gold-300), var(--gold-500));
+  font-size: 0.92rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--red-800), var(--red-900));
+  flex-shrink: 0;
 }
 
 .message-body p {
   margin: 6px 0 0;
+  color: var(--red-900);
+  font-size: 0.92rem;
+  line-height: 1.6;
 }
 
 .message-meta {
@@ -601,45 +777,47 @@
   justify-content: space-between;
   gap: 12px;
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   font-weight: 700;
 }
 
 .message-actions {
   margin-top: 8px;
   display: flex;
-  gap: 12px;
+  gap: 10px;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
 .message-action-button {
-  border: 1px solid rgba(214, 163, 58, 0.5);
+  border: 1px solid rgba(214, 163, 58, 0.4);
   border-radius: 999px;
-  padding: 4px 10px;
-  background: rgba(255, 248, 237, 0.8);
-  color: var(--red-900);
-  font-size: 0.82rem;
+  padding: 3px 10px;
+  background: rgba(255, 248, 237, 0.75);
+  color: var(--red-700);
+  font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, color 160ms ease;
 }
 
 .message-action-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 16px rgba(127, 29, 29, 0.12);
+  box-shadow: 0 6px 14px rgba(127, 29, 29, 0.1);
+  background: rgba(214, 163, 58, 0.2);
 }
 
 .message-action-button.is-liked {
   background: linear-gradient(135deg, var(--gold-300), var(--gold-500));
   color: var(--red-900);
+  border-color: transparent;
 }
 
 .message-reply {
-  margin-top: 12px;
-  padding-left: 18px;
-  border-left: 2px dashed rgba(214, 163, 58, 0.6);
+  margin-top: 10px;
+  padding-left: 16px;
+  border-left: 2px solid rgba(214, 163, 58, 0.45);
 }
 
 .message-reply.is-collapsed {
@@ -647,27 +825,32 @@
 }
 
 .reply-card {
-  padding: 12px 14px;
+  padding: 10px 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 253, 247, 0.96);
+  background: rgba(255, 248, 237, 0.75);
 }
 
 .reply-meta {
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
+.reply-card p {
+  font-size: 0.9rem !important;
+}
+
+/* ---- 输入区 ---- */
 .message-input {
-  padding: 18px 20px;
+  padding: 16px 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(255, 253, 247, 0.96);
-  box-shadow: 0 12px 26px rgba(127, 29, 29, 0.08);
+  box-shadow: 0 8px 20px rgba(127, 29, 29, 0.05);
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .message-input-header {
@@ -676,21 +859,33 @@
   gap: 12px;
   color: var(--red-900);
   font-weight: 700;
+  font-size: 0.92rem;
 }
 
 .message-input-counter {
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: 0.82rem;
 }
 
-
 .message-input-box {
-  min-height: 110px;
+  min-height: 100px;
   padding: 12px 14px;
-  border: 1px dashed rgba(214, 163, 58, 0.65);
+  border: 1px dashed rgba(214, 163, 58, 0.5);
   border-radius: var(--radius);
   color: var(--muted);
-  background: rgba(255, 248, 237, 0.5);
+  background: rgba(255, 248, 237, 0.4);
+  font-size: 0.9rem;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.message-input-box:hover {
+  border-color: rgba(214, 163, 58, 0.7);
+  background: rgba(255, 248, 237, 0.6);
+}
+
+.message-input-box p {
+  margin: 0;
+  opacity: 0.55;
 }
 
 .message-input-actions {
@@ -698,30 +893,6 @@
   justify-content: flex-end;
   flex-wrap: wrap;
   gap: 10px;
-}
-
-.thread-summary {
-  padding: 18px 20px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: rgba(255, 253, 247, 0.95);
-  box-shadow: 0 12px 26px rgba(127, 29, 29, 0.08);
-  display: grid;
-  gap: 10px;
-}
-
-.thread-summary h4 {
-  margin: 0 0 6px;
-  color: var(--red-900);
-}
-
-.thread-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--muted);
-  font-size: 0.86rem;
-  font-weight: 700;
 }
 
 .symposium-detail {
