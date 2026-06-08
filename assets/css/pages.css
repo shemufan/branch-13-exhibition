@@ -56,9 +56,18 @@
 
 .hero h1 {
   max-width: 850px;
-  margin-bottom: 22px;
+  margin-bottom: 14px;
   color: var(--paper-strong);
   text-shadow: 0 8px 22px rgba(42, 23, 23, 0.28);
+}
+
+.hero-subtitle {
+  max-width: 720px;
+  margin-bottom: 28px;
+  color: rgba(255, 248, 237, 0.74);
+  font-size: clamp(1.1rem, 3vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
 }
 
 .hero-copy {
