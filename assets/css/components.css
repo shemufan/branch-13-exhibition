@@ -237,6 +237,8 @@
 
   .brand-text {
     max-width: calc(100vw - 90px);
+    white-space: normal;
+    text-overflow: clip;
   }
 
   .site-nav {
